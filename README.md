@@ -1,4 +1,4 @@
-- lock down users to only admin
-- my account sections
 - create courses resource
 - upload
+- lock down users to only admin
+- my account sections
