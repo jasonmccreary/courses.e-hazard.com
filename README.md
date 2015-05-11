@@ -1,5 +1,4 @@
-- create users resource
-- remove registration
-- create courses
-- boostrapify
-- tests
+- lock down users to only admin
+- my account sections
+- create courses resource
+- upload
