@@ -1,4 +1,7 @@
-- create courses resource
+- add state drop down
+- courses index page
+- pagination
+
 - upload
 
 - lock down users to only admin

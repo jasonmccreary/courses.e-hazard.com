@@ -3,6 +3,7 @@
 use App\Schedule;
 use App\Course;
 use App\Http\Requests;
+use App\State;
 use Illuminate\Http\Request;
 
 class SchedulesController extends Controller {
@@ -23,11 +24,11 @@ class SchedulesController extends Controller {
     }
 
     /**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function show($id)
     {
         $schedule = Schedule::findOrFail($id);
@@ -42,7 +43,10 @@ class SchedulesController extends Controller {
      */
     public function create()
     {
-        return view('schedules.create');
+        $courses = Course::orderBy('name')->lists('name', 'id');
+        $states = State::orderBy('name')->lists('name', 'id');
+
+        return view('schedules.create', compact('courses', 'states'));
     }
 
     /**
@@ -65,9 +69,11 @@ class SchedulesController extends Controller {
      */
     public function edit($id)
     {
-        $course = Schedule::findOrFail($id);
+        $schedule = Schedule::findOrFail($id);
+        $courses = Course::orderBy('name')->lists('name', 'id');
+        $states = State::orderBy('name')->lists('name', 'id');
 
-        return view('courses.edit', compact('course'));
+        return view('schedules.edit', compact('schedule', 'courses', 'states'));
     }
 
     /**

@@ -9,6 +9,10 @@ class Schedule extends Model
      *
      * @var array
      */
+    protected $fillable = ['course_id', 'name', 'description', 'start', 'end', 'city'];
 
-    protected $fillable = ['name', 'description', 'start', 'end', 'city', 'state'];
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }
