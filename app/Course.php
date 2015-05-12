@@ -2,13 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model
-{
+class Course extends Model {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-
-    protected $fillable = ['name', 'description', 'start', 'end', 'city', 'state'];
+    protected $fillable = ['name'];
 }

@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Schedule;
 use App\Course;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class SchedulesController extends Controller {
+class CoursesController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');
@@ -18,21 +17,21 @@ class SchedulesController extends Controller {
      */
     public function index()
     {
-        $schedules = Schedule::all();
-        return view('schedules.index', compact('schedules'));
+        $courses = Course::all();
+        return view('courses.index', compact('courses'));
     }
 
     /**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function show($id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $course = Course::findOrFail($id);
 
-        return view('schedules.show', compact('schedule'));
+        return view('courses.show', compact('course'));
     }
 
     /**
@@ -42,7 +41,7 @@ class SchedulesController extends Controller {
      */
     public function create()
     {
-        return view('schedules.create');
+        return view('courses.create');
     }
 
     /**
@@ -52,9 +51,9 @@ class SchedulesController extends Controller {
      */
     public function store(Request $request)
     {
-        Schedule::create($request->all());
+        Course::create($request->all());
 
-        return redirect()->route('classes.index');
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -65,7 +64,7 @@ class SchedulesController extends Controller {
      */
     public function edit($id)
     {
-        $course = Schedule::findOrFail($id);
+        $course = Course::findOrFail($id);
 
         return view('courses.edit', compact('course'));
     }
@@ -78,11 +77,11 @@ class SchedulesController extends Controller {
      */
     public function update($id, Request $request)
     {
-        $schedule = Schedule::findOrFail($id);
+        $course = Course::findOrFail($id);
 
-        $schedule->update($request->all());
+        $course->update($request->all());
 
-        return redirect()->route('classes.index');
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -93,10 +92,10 @@ class SchedulesController extends Controller {
      */
     public function destroy($id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $course = Course::findOrFail($id);
 
-        $schedule->delete();
+        $course->delete();
 
-        return redirect()->route('classes.index');
+        return redirect()->route('courses.index');
     }
 }
