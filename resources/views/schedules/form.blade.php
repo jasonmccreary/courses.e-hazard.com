@@ -24,8 +24,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('state') !!}
-    {!! Form::text('state', null, ['class' => 'form-control']) !!}
+    {!! Form::label('state_id', 'State') !!}
+    {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

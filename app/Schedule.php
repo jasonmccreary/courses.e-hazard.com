@@ -9,7 +9,7 @@ class Schedule extends Model
      *
      * @var array
      */
-    protected $fillable = ['course_id', 'name', 'description', 'start', 'end', 'city'];
+    protected $fillable = ['course_id', 'name', 'description', 'start', 'end', 'city', 'state_id'];
 
     public function course()
     {

@@ -2,8 +2,8 @@
 
 use App\Schedule;
 use App\Course;
-use App\Http\Requests;
 use App\State;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
 class SchedulesController extends Controller {
