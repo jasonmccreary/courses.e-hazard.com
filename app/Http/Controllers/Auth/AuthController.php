@@ -6,9 +6,10 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
 
-	/*
+    /*
 	|--------------------------------------------------------------------------
 	| Registration & Login Controller
 	|--------------------------------------------------------------------------
@@ -19,28 +20,30 @@ class AuthController extends Controller {
 	|
 	*/
 
-	use AuthenticatesAndRegistersUsers;
+    use AuthenticatesAndRegistersUsers;
 
-	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-	 * @return void
-	 */
-	public function __construct(Guard $auth, Registrar $registrar)
-	{
-		$this->auth = $auth;
-		$this->registrar = $registrar;
+    /**
+     * Create a new authentication controller instance.
+     *
+     * @param  \Illuminate\Contracts\Auth\Guard  $auth
+     * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
+     * @return void
+     */
+    public function __construct(Guard $auth, Registrar $registrar)
+    {
+        $this->auth = $auth;
+        $this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
-	}
+        $this->middleware('guest', ['except' => 'getLogout']);
+    }
 
-    public function getRegister() {
+    public function getRegister()
+    {
         abort(404);
     }
 
-    public function postRegister(Request $request) {
+    public function postRegister(Request $request)
+    {
         abort(404);
     }
 }

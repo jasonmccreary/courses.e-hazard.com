@@ -4,9 +4,11 @@ use App\Course;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class CoursesController extends Controller {
+class CoursesController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 

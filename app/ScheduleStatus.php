@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class ScheduleStatus extends Model {
+class ScheduleStatus extends Model
+{
 
 }

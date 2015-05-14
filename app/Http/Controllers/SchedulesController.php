@@ -7,9 +7,11 @@ use App\State;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class SchedulesController extends Controller {
+class SchedulesController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
