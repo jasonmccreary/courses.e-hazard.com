@@ -1,6 +1,4 @@
 # Todo
-- format to PSR2
-- courses validation
 - courses index page (limit to future courses)
 - pagination
 - upload for review

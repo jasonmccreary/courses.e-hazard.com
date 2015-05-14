@@ -43,7 +43,7 @@
     <label data-toggle="collapse" data-target="#collapseOne">{!! Form::checkbox('has_sponsor', 1) !!} Sponsored</label>
 </div>
 
-<div id="collapseOne" class="collapse{{ $schedule->has_sponsor ? ' in' : '' }}">
+<div id="collapseOne" class="collapse{{ empty($schedule->has_sponsor) ? '' : ' in' }}">
     <div class="form-group">
         {!! Form::label('sponsor_name') !!}
         {!! Form::text('sponsor_name', null, ['class' => 'form-control']) !!}

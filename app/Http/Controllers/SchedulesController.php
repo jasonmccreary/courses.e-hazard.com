@@ -1,15 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\ScheduleFormRequest;
 use App\Schedule;
 use App\Course;
 use App\ScheduleStatus;
 use App\State;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 
 class SchedulesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -56,9 +55,10 @@ class SchedulesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param ScheduleFormRequest $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ScheduleFormRequest $request)
     {
         Schedule::create($request->all());
 
@@ -87,7 +87,7 @@ class SchedulesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, ScheduleFormRequest $request)
     {
         $schedule = Schedule::findOrFail($id);
 
