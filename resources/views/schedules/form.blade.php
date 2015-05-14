@@ -15,7 +15,7 @@
 
 <div class="form-group">
     {!! Form::label('end') !!}
-    {!! Form::text('end', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+    {!! Form::text('end', \Carbon\Carbon::now()->addMinutes(4), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

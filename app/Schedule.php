@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
@@ -11,7 +12,6 @@ class Schedule extends Model
      */
     protected $fillable = [
         'course_id',
-        'name',
         'start',
         'end',
         'city',
@@ -31,5 +31,10 @@ class Schedule extends Model
     public function scheduleStatus()
     {
         return $this->belongsTo('App\ScheduleStatus');
+    }
+
+    public function scopeUpcoming($query)
+    {
+        return $query->where('end', '>=', Carbon::now()->toDateTimeString());
     }
 }

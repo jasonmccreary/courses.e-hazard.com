@@ -14,18 +14,20 @@
             </tr>
             </thead>
             <tbody>
-        @foreach ($courses as $course)
-            <tr>
-                <td width="80%">{{ $course->name }}</td>
-                <td width="20%">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['courses.destroy', $course->id]]) !!}
-                    {!! link_to_route('courses.edit', 'Edit', [$course->id], ['class' => 'btn btn-default']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
+            @foreach ($courses as $course)
+                <tr>
+                    <td width="80%">{{ $course->name }}</td>
+                    <td width="20%">
+                        {!! Form::open(['method' => 'DELETE', 'route' => ['courses.destroy', $course->id]]) !!}
+                        {!! link_to_route('courses.edit', 'Edit', [$course->id], ['class' => 'btn btn-default']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
+
+    {!! $courses->render() !!}
 @stop

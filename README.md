@@ -1,8 +1,4 @@
 # Todo
-- courses index page (limit to future courses)
-- pagination
-- upload for review
-
 - date picker?
 - what data to display on courses dashboard
 
@@ -19,3 +15,9 @@
 - Staging Setup: .5
 - 1and1: .5
 - change name: 1
+- change name: .75
+- added course fields: .75
+- validation and index page: 1.25
+- pagination: .5
+- change route: .25
+- upload: .25

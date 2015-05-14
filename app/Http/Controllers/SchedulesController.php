@@ -21,7 +21,7 @@ class SchedulesController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::all();
+        $schedules = Schedule::upcoming()->paginate(10);
         return view('schedules.index', compact('schedules'));
     }
 
