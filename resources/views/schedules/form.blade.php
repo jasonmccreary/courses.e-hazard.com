@@ -9,11 +9,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('description') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
     {!! Form::label('start') !!}
     {!! Form::text('start', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
 </div>
