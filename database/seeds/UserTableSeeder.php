@@ -11,5 +11,10 @@ class UserTableSeeder extends Seeder
             'email' => 'jason@pureconcepts.net',
             'password' => Hash::make('mccreaja')
         ]);
+
+        User::create([
+            'email' => 'jason@arcwear.com',
+            'password' => Hash::make('taint')
+        ]);
     }
 }
