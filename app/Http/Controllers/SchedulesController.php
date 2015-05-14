@@ -2,6 +2,7 @@
 
 use App\Schedule;
 use App\Course;
+use App\ScheduleStatus;
 use App\State;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -44,9 +45,10 @@ class SchedulesController extends Controller {
     public function create()
     {
         $courses = Course::orderBy('name')->lists('name', 'id');
+        $schedule_statuses = ScheduleStatus::lists('name', 'id');
         $states = State::orderBy('name')->lists('name', 'id');
 
-        return view('schedules.create', compact('courses', 'states'));
+        return view('schedules.create', compact('courses', 'states', 'schedule_statuses'));
     }
 
     /**
@@ -71,9 +73,10 @@ class SchedulesController extends Controller {
     {
         $schedule = Schedule::findOrFail($id);
         $courses = Course::orderBy('name')->lists('name', 'id');
+        $schedule_statuses = ScheduleStatus::lists('name', 'id');
         $states = State::orderBy('name')->lists('name', 'id');
 
-        return view('schedules.edit', compact('schedule', 'courses', 'states'));
+        return view('schedules.edit', compact('schedule', 'courses', 'states', 'schedule_statuses'));
     }
 
     /**

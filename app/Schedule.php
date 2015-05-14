@@ -9,10 +9,28 @@ class Schedule extends Model
      *
      * @var array
      */
-    protected $fillable = ['course_id', 'name', 'description', 'start', 'end', 'city', 'state_id'];
+    protected $fillable = [
+        'course_id',
+        'name',
+        'description',
+        'start',
+        'end',
+        'city',
+        'state_id',
+        'schedule_status_id',
+        'url',
+        'has_sponsor',
+        'sponsor_name',
+        'sponsor_url'
+    ];
 
     public function course()
     {
         return $this->belongsTo('App\Course');
+    }
+
+    public function scheduleStatus()
+    {
+        return $this->belongsTo('App\ScheduleStatus');
     }
 }

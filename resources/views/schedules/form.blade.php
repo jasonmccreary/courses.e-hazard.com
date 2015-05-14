@@ -4,6 +4,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('schedule_status_id', 'Status') !!}
+    {!! Form::select('schedule_status_id', $schedule_statuses, null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('description') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
@@ -26,6 +31,28 @@
 <div class="form-group">
     {!! Form::label('state_id', 'State') !!}
     {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('url') !!}
+    {!! Form::text('url', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::hidden('has_sponsor', 0); !!}
+    <label data-toggle="collapse" data-target="#collapseOne">{!! Form::checkbox('has_sponsor', 1) !!} Sponsored</label>
+</div>
+
+<div id="collapseOne" class="collapse{{ $schedule->has_sponsor ? ' in' : '' }}">
+    <div class="form-group">
+        {!! Form::label('sponsor_name') !!}
+        {!! Form::text('sponsor_name', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('sponsor_url') !!}
+        {!! Form::text('sponsor_url', null, ['class' => 'form-control']) !!}
+    </div>
 </div>
 
 <div class="form-group">
