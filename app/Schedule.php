@@ -11,7 +11,6 @@ class Schedule extends Model
      * @var array
      */
     protected $fillable = [
-        'course_id',
         'start',
         'end',
         'city',

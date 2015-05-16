@@ -1,25 +1,25 @@
 @extends('app')
 
 @section('content')
-    {!! link_to_route('classes.create', 'New Class', null, ['class' => 'btn btn-default']) !!}
+    {!! link_to_route('courses.classes.create', 'New Class', [$course->id], ['class' => 'btn btn-default']) !!}
 
-    <h1 class="page-header">Classes</h1>
+    <h1 class="page-header">{{ $course->name }} Classes</h1>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th width="80%">Name</th>
-                <th width="20%">Actions</th>
+                <th width="20%">&nbsp;</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($schedules as $schedule)
                 <tr>
                     <td width="80%">{{ $schedule->name }}</td>
-                    <td width="20%">
-                        {!! Form::open(['method' => 'DELETE', 'route' => ['classes.destroy', $schedule->id]]) !!}
-                        {!! link_to_route('classes.edit', 'Edit', [$schedule->id], ['class' => 'btn btn-default']) !!}
+                    <td align="right">
+                        {!! Form::open(['method' => 'DELETE', 'route' => ['courses.classes.destroy', $course->id, $schedule->id]]) !!}
+                        {!! link_to_route('courses.classes.edit', 'Edit', [$course->id, $schedule->id], ['class' => 'btn btn-default']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     </td>

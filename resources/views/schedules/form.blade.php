@@ -1,11 +1,11 @@
 <div class="form-group">
-    {!! Form::label('course_id', 'Course') !!}
-    {!! Form::select('course_id', $courses, null, ['class' => 'form-control']) !!}
+    {!! Form::label('city') !!}
+    {!! Form::text('city', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('schedule_status_id', 'Status') !!}
-    {!! Form::select('schedule_status_id', $schedule_statuses, null, ['class' => 'form-control']) !!}
+    {!! Form::label('state_id', 'State') !!}
+    {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -19,17 +19,12 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('city') !!}
-    {!! Form::text('city', null, ['class' => 'form-control']) !!}
+    {!! Form::label('schedule_status_id', 'Status') !!}
+    {!! Form::select('schedule_status_id', $schedule_statuses, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('state_id', 'State') !!}
-    {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::label('url') !!}
+    {!! Form::label('url', 'URL') !!}
     {!! Form::text('url', null, ['class' => 'form-control']) !!}
 </div>
 

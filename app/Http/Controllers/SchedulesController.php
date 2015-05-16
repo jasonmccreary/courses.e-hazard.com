@@ -19,10 +19,12 @@ class SchedulesController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($course_id)
     {
-        $schedules = Schedule::upcoming()->paginate(10);
-        return view('schedules.index', compact('schedules'));
+        $course = Course::findOrFail($course_id);
+        $schedules = Schedule::upcoming()->where('course_id', '=', $course_id)->paginate(10);
+
+        return view('schedules.index', compact('course', 'schedules'));
     }
 
     /**
@@ -31,9 +33,9 @@ class SchedulesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($course_id, $schedule_id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $schedule = Schedule::findOrFail($schedule_id);
 
         return view('schedules.show', compact('schedule'));
     }
@@ -43,13 +45,12 @@ class SchedulesController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create($course_id)
     {
-        $courses = Course::orderBy('name')->lists('name', 'id');
         $schedule_statuses = ScheduleStatus::lists('name', 'id');
         $states = State::orderBy('name')->lists('name', 'id');
 
-        return view('schedules.create', compact('courses', 'states', 'schedule_statuses'));
+        return view('schedules.create', compact('states', 'schedule_statuses', 'course_id'));
     }
 
     /**
@@ -58,11 +59,14 @@ class SchedulesController extends Controller
      * @param ScheduleFormRequest $request
      * @return Response
      */
-    public function store(ScheduleFormRequest $request)
+    public function store($course_id, ScheduleFormRequest $request)
     {
-        Schedule::create($request->all());
+        $course = new Schedule();
+        $course->fill($request->all());
+        $course->course_id = $course_id;
+        $course->save();
 
-        return redirect()->route('classes.index');
+        return redirect()->route('courses.classes.index', $course_id);
     }
 
     /**
@@ -71,14 +75,13 @@ class SchedulesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($course_id, $schedule_id)
     {
-        $schedule = Schedule::findOrFail($id);
-        $courses = Course::orderBy('name')->lists('name', 'id');
+        $schedule = Schedule::findOrFail($schedule_id);
         $schedule_statuses = ScheduleStatus::lists('name', 'id');
         $states = State::orderBy('name')->lists('name', 'id');
 
-        return view('schedules.edit', compact('schedule', 'courses', 'states', 'schedule_statuses'));
+        return view('schedules.edit', compact('schedule', 'states', 'schedule_statuses'));
     }
 
     /**
@@ -87,13 +90,13 @@ class SchedulesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, ScheduleFormRequest $request)
+    public function update($course_id, $schedule_id, ScheduleFormRequest $request)
     {
-        $schedule = Schedule::findOrFail($id);
+        $schedule = Schedule::findOrFail($schedule_id);
 
         $schedule->update($request->all());
 
-        return redirect()->route('classes.index');
+        return redirect()->route('courses.classes.index', $course_id);
     }
 
     /**
@@ -102,12 +105,12 @@ class SchedulesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($course_id, $schedule_id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $schedule = Schedule::findOrFail($schedule_id);
 
         $schedule->delete();
 
-        return redirect()->route('classes.index');
+        return redirect()->route('course.classes.index', $course_id);
     }
 }

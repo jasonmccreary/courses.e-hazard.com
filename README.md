@@ -1,7 +1,8 @@
 # Todo
-- date picker?
-- what data to display on courses dashboard
-
+- if sponsor at least name required
+- change to dates
+- add date picker
+- classes.index row display
 - lock down users to only admin
 - my account sections
 - ensure password is stored encrypted
@@ -21,3 +22,5 @@
 - pagination: .5
 - change route: .25
 - upload: .25
+- meeting: .25
+- classes subcontroller: .75

@@ -24,19 +24,6 @@ class CoursesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        $course = Course::findOrFail($id);
-
-        return view('courses.show', compact('course'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return Response
