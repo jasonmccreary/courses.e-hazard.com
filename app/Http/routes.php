@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'CoursesController@index');
 
 Route::resource('users', 'UsersController');
 Route::resource('courses', 'CoursesController');

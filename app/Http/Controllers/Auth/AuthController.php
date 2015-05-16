@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    protected $redirectTo = '/';
-
     /*
 	|--------------------------------------------------------------------------
 	| Registration & Login Controller
