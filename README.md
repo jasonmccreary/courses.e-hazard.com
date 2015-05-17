@@ -1,5 +1,4 @@
 # Todo
-- change to datetimes to dates
 - add date picker
 - classes.index row display
 - lock down users to only admin
