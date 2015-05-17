@@ -25,8 +25,16 @@ class ScheduleFormRequest extends Request
             'start' => 'required',
             'end' => 'required',
             'schedule_status_id' => 'required|exists:schedule_statuses,id',
-            'url' => 'required|url',
-            'sponsor' => 'boolean',
+            'url' => 'url|required_if:schedule_status_id,1',
+            'has_sponsor' => 'boolean',
+            'sponsor_name' => 'required_if:has_sponsor,1'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'url.required_if' => 'URL is required when Status is Register.',
+            'sponsor_name.required_if' => 'Sponsor Name is required when Sponsored is checked.'
         ];
     }
 }

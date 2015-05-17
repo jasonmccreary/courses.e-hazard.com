@@ -29,11 +29,14 @@
 </div>
 
 <div class="form-group">
-    {!! Form::hidden('has_sponsor', 0); !!}
+    <input name="has_sponsor" type="hidden" value="0">
     <label data-toggle="collapse" data-target="#collapseOne">{!! Form::checkbox('has_sponsor', 1) !!} Sponsored</label>
 </div>
 
-<div id="collapseOne" class="collapse{{ empty($schedule->has_sponsor) ? '' : ' in' }}">
+<?php
+$toggle = is_null(old('has_sponsor')) ? !empty($schedule->has_sponsor) : old('has_sponsor');
+?>
+<div id="collapseOne" class="collapse{{ $toggle ? ' in' : '' }}">
     <div class="form-group">
         {!! Form::label('sponsor_name') !!}
         {!! Form::text('sponsor_name', null, ['class' => 'form-control']) !!}
