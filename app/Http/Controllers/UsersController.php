@@ -46,7 +46,11 @@ class UsersController extends Controller
             'password' => 'required|confirmed'
         ]);
 
-        User::create($request->all());
+        $user = new User();
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+
+        $user->save();
 
         return redirect()->route('users.index');
     }
@@ -78,15 +82,14 @@ class UsersController extends Controller
         ]);
 
         $user = User::findOrFail($id);
+        $user->email = $request->get('email');
 
-        $data = $request->only(['email']);
         $password = $request->get('password');
-
         if (!empty($password)) {
-            $data['password'] = Hash::make($password);
+            $user->password = Hash::make($password);
         }
 
-        $user->update($data);
+        $user->save();
 
         return redirect()->route('users.index');
     }
