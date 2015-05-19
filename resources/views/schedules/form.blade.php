@@ -8,14 +8,18 @@
     {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
 </div>
 
+<?php
+$start = empty($schedule->start) ? null : $schedule->start->format('m/d/Y');
+$end = empty($schedule->end) ? null : $schedule->end->format('m/d/Y');
+?>
 <div class="form-group">
     {!! Form::label('start') !!}
-    {!! Form::text('start', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+    {!! Form::text('start', $start, ['class' => 'form-control date-picker', 'placeholder' => 'mm/dd/yyyy']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('end') !!}
-    {!! Form::text('end', \Carbon\Carbon::now()->addMinutes(4), ['class' => 'form-control']) !!}
+    {!! Form::text('end', $end, ['class' => 'form-control date-picker', 'placeholder' => 'mm/dd/yyyy']) !!}
 </div>
 
 <div class="form-group">

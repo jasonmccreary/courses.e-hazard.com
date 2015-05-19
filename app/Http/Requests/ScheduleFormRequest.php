@@ -22,8 +22,8 @@ class ScheduleFormRequest extends Request
         return [
             'city' => 'required',
             'state_id' => 'required|exists:states,id',
-            'start' => 'required',
-            'end' => 'required',
+            'start' => 'required|date|date_format:m/d/Y|after:yesterday',
+            'end' => 'required|date|date_format:m/d/Y|after:yesterday',
             'schedule_status_id' => 'required|exists:schedule_statuses,id',
             'url' => 'url|required_if:schedule_status_id,1',
             'has_sponsor' => 'boolean',

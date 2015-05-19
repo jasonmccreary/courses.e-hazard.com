@@ -15,9 +15,4 @@ class Course extends Model
     {
         return $this->hasMany('App\Schedule');
     }
-
-    public function state()
-    {
-        return $this->belongsTo('App\State');
-    }
 }

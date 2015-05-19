@@ -1,6 +1,4 @@
 # Todo
-- add date picker
-- classes.index row display
 - lock down users to only admin
 - my account sections
 - ensure password is stored encrypted
@@ -22,3 +20,6 @@
 - upload: .25
 - meeting: .25
 - classes subcontroller: .75
+- sprint 2: 1.5
+- datepicker: 2
+- my profile: 1

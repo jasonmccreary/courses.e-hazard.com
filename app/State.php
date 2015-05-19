@@ -4,8 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    public function courses()
+    public function schedules()
     {
-        return $this->hasMany('App\Course');
+        return $this->hasMany('App\Schedule');
     }
 }

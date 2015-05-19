@@ -22,6 +22,18 @@ class Schedule extends Model
         'sponsor_url'
     ];
 
+    protected $dates = ['start', 'end'];
+
+    public function setStartAttribute($value)
+    {
+        $this->attributes['start'] = Carbon::createFromFormat('m/d/Y', $value);
+    }
+
+    public function setEndAttribute($value)
+    {
+        $this->attributes['end'] = Carbon::createFromFormat('m/d/Y', $value);
+    }
+
     public function course()
     {
         return $this->belongsTo('App\Course');
@@ -32,8 +44,14 @@ class Schedule extends Model
         return $this->belongsTo('App\ScheduleStatus');
     }
 
+    public function state()
+    {
+        return $this->belongsTo('App\State');
+    }
+
     public function scopeUpcoming($query)
     {
-        return $query->where('end', '>=', Carbon::now()->toDateTimeString());
+        // UTC inconsistency forced use of 'yesterday'
+        return $query->where('end', '>=', Carbon::yesterday()->toDateString());
     }
 }
