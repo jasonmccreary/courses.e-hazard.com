@@ -9,6 +9,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th class="text-center">ID</th>
                 <th width="70%">Name</th>
                 <th>&nbsp;</th>
             </tr>
@@ -16,6 +17,7 @@
             <tbody>
             @foreach ($courses as $course)
                 <tr>
+                    <td class="text-center">{{ $course->id }}</td>
                     <td>{{ $course->name }}</td>
                     <td align="right">
                         {!! Form::open(['method' => 'DELETE', 'route' => ['courses.destroy', $course->id]]) !!}

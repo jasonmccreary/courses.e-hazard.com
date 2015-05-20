@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'CoursesController@index');
+Route::get('/documentation', ['as' => 'documentation.index', 'uses' => 'DocumentationController@index']);
 
 Route::resource('users', 'UsersController');
 Route::resource('courses', 'CoursesController');
