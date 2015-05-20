@@ -1,7 +1,8 @@
 # Todo
-- lock down users to only admin
-- my account sections
-
+- test on a page
+- how to cache responses
+- flash messages
+- what should the output be when there are no results
 
 # Time
 - Initial project setup: 1
@@ -23,3 +24,5 @@
 - sprint 2: 1.5
 - datepicker: 2
 - my profile: 1
+- locked admin: .25
+- sprint 3: 1.75
