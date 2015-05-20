@@ -31,7 +31,8 @@ class ScheduleFormRequest extends Request
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'url.required_if' => 'URL is required when Status is Register.',
             'sponsor_name.required_if' => 'Sponsor Name is required when Sponsored is checked.'

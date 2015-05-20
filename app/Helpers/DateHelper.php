@@ -2,12 +2,14 @@
 
 use Carbon\Carbon;
 
-class DateHelper {
+class DateHelper
+{
     /**
      * @param Carbon $start
      * @param Carbon $end
      */
-    public static function displayRange(Carbon $start, Carbon $end) {
+    public static function displayRange(Carbon $start, Carbon $end)
+    {
         if ($start->eq($end)) {
             return $end->format('F j, Y');
         }
