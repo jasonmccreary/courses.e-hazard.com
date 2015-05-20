@@ -15,7 +15,7 @@ class AdminMiddleware {
 	{
         if (!$request->user()->is_admin)
         {
-            return redirect('/');
+            return redirect('/')->with('flash', ['level' => 'error', 'message' => 'You do not have access to this feature.']);;
         }
 
 		return $next($request);

@@ -40,9 +40,9 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        Course::create($request->all());
+        $course = Course::create($request->all());
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('flash', ['level' => 'success', 'message' => 'Added "' . $course->name . '".']);
     }
 
     /**
@@ -70,7 +70,7 @@ class CoursesController extends Controller
 
         $course->update($request->all());
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('flash', ['level' => 'success', 'message' => 'Updated "' . $course->name . '".']);
     }
 
     /**
@@ -85,6 +85,6 @@ class CoursesController extends Controller
 
         $course->delete();
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('flash', ['level' => 'success', 'message' => 'Deleted "' . $course->name . '".']);
     }
 }

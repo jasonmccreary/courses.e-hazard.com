@@ -14,7 +14,7 @@ class Owner
     public function handle($request, Closure $next)
     {
         if (!$request->user()->is_admin && $request->user()->id != $request->route()->getParameter('users')) {
-            return redirect('/');
+            return redirect('/')->with('flash', ['level' => 'error', 'message' => 'You do not have access to this feature.']);;
         }
 
         return $next($request);

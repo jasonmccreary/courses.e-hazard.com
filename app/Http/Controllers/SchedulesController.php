@@ -61,12 +61,12 @@ class SchedulesController extends Controller
      */
     public function store($course_id, ScheduleFormRequest $request)
     {
-        $course = new Schedule();
-        $course->fill($request->all());
-        $course->course_id = $course_id;
-        $course->save();
+        $schedule = new Schedule();
+        $schedule->fill($request->all());
+        $schedule->course_id = $course_id;
+        $schedule->save();
 
-        return redirect()->route('courses.classes.index', $course_id);
+        return redirect()->route('courses.classes.index', $course_id)->with('flash', ['level' => 'success', 'message' => 'Added class in "' . $schedule->city . '".']);
     }
 
     /**
@@ -96,7 +96,7 @@ class SchedulesController extends Controller
 
         $schedule->update($request->all());
 
-        return redirect()->route('courses.classes.index', $course_id);
+        return redirect()->route('courses.classes.index', $course_id)->with('flash', ['level' => 'success', 'message' => 'Updated class in "' . $schedule->city . '".']);
     }
 
     /**
@@ -111,6 +111,6 @@ class SchedulesController extends Controller
 
         $schedule->delete();
 
-        return redirect()->route('course.classes.index', $course_id);
+        return redirect()->route('courses.classes.index', $course_id)->with('flash', ['level' => 'success', 'message' => 'Deleted class in "' . $schedule->city . '".']);
     }
 }

@@ -17,6 +17,7 @@
                 @if (Auth::user()->is_admin)
                 <li><a href="{{ route('users.index') }}">Users</a></li>
                 @endif
+                <li><a href="{{ route('documentation.index') }}">Documentation</a></li>
             </ul>
             @endif
 

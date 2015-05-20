@@ -1,7 +1,5 @@
 # Todo
-- test on a page
 - how to cache responses
-- flash messages
 - what should the output be when there are no results
 
 # Time
@@ -26,3 +24,5 @@
 - my profile: 1
 - locked admin: .25
 - sprint 3: 1.75
+- documenation: .5
+- flash messages: .5

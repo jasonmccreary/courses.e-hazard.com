@@ -55,7 +55,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('flash', ['level' => 'success', 'message' => 'Added "' . $user->email . '".']);
     }
 
     /**
@@ -100,7 +100,11 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index');
+        if (Auth::user()->id == $id) {
+            return redirect()->route('users.edit', $id)->with('flash', ['level' => 'success', 'message' => 'Your account has been updated.']);
+        }
+
+        return redirect()->route('users.index')->with('flash', ['level' => 'success', 'message' => 'Updated "' . $user->email . '".']);
     }
 
     /**
@@ -115,6 +119,6 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('flash', ['level' => 'success', 'message' => 'Deleted "' . $user->email . '".']);
     }
 }
