@@ -2,6 +2,7 @@
 - lock down users to only admin
 - my account sections
 
+
 # Time
 - Initial project setup: 1
 - Laravel 5 reinstall: 1

@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -11,6 +12,8 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin', ['except' => ['edit', 'update']]);
+        $this->middleware('owner', ['only' => ['edit', 'update']]);
     }
 
     /**
@@ -47,7 +50,7 @@ class UsersController extends Controller
         ]);
 
         $user = new User();
-        $user->email = $request->get('email');
+        $user->fill($request->only(['email', 'is_admin']));
         $user->password = Hash::make($request->get('password'));
 
         $user->save();
@@ -82,7 +85,13 @@ class UsersController extends Controller
         ]);
 
         $user = User::findOrFail($id);
-        $user->email = $request->get('email');
+
+        $fillable = ['email'];
+        if (Auth::user()->is_admin) {
+            $fillable[] = 'is_admin';
+        }
+
+        $user->fill($request->only($fillable));
 
         $password = $request->get('password');
         if (!empty($password)) {
