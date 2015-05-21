@@ -7,16 +7,16 @@ Route::resource('users', 'UsersController');
 Route::resource('courses', 'CoursesController');
 Route::resource('courses.classes', 'SchedulesController');
 
-Route::get('/course-schedule/{id}', function ($id) {
+Route::get('/course-schedule/{id}', ['middleware' => 'cache.response', function ($id) {
     $key = 'schedule-' . $id;
     $schedules = \App\Schedule::upcoming()->where('course_id', '=', $id)->orderBy('start')->get();
 
     $data = view('javascript.course', compact('schedules'));
 
     return response()->view('javascript.handler', compact('key', 'data'))->header('Content-Type', 'application/javascript');
-})->where(['id' => '[0-9]+']);
+}])->where(['id' => '[0-9]+']);
 
-Route::get('/state-schedule/{code}', function ($code) {
+Route::get('/state-schedule/{code}', ['middleware' => 'cache.response', function ($code) {
     $state = \App\State::where('code', '=', $code)->firstOrFail();
 
     $key = 'schedule-' . $code;
@@ -25,7 +25,7 @@ Route::get('/state-schedule/{code}', function ($code) {
     $data = view('javascript.state', compact('schedules'));
 
     return response()->view('javascript.handler', compact('key', 'data'))->header('Content-Type', 'application/javascript');
-})->where(['code' => '[A-Z]{2}']);
+}])->where(['code' => '[A-Z]{2}']);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

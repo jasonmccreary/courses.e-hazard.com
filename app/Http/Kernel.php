@@ -30,5 +30,6 @@ class Kernel extends HttpKernel
         'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
         'admin' => 'App\Http\Middleware\AdminMiddleware',
         'owner' => 'App\Http\Middleware\Owner',
+        'cache.response' => 'App\Http\Middleware\ResponseCache'
     ];
 }

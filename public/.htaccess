@@ -8,6 +8,12 @@
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
+    RewriteCond %{DOCUMENT_ROOT}/js/cache/course-schedule-$1.js -f
+    RewriteRule ^course-schedule/(\d+)/?$ /js/cache/course-schedule-$1.js [L]
+
+    RewriteCond %{DOCUMENT_ROOT}/js/cache/state-schedule-$1.js -f
+    RewriteRule ^state-schedule/([A-Z]{2})/?$ /js/cache/state-schedule-$1.js [L]
+
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f

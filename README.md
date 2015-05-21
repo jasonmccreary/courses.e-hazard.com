@@ -1,6 +1,7 @@
 # Todo
-- how to cache responses
-- what should the output be when there are no results
+
+# Cron
+rm -rf public/js/cache && mkdir public/js/cache
 
 # Time
 - Initial project setup: 1
@@ -26,3 +27,5 @@
 - sprint 3: 1.75
 - documenation: .5
 - flash messages: .5
+- sprint 3: .25
+- caching: 1
