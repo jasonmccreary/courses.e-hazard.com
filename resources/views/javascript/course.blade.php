@@ -1,3 +1,4 @@
+@if (count($schedules))
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -28,3 +29,6 @@
     @endforeach
     </tbody>
 </table>
+@else
+    <p>No classes scheduled at this time.</p>
+@endif
