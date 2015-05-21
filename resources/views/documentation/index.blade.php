@@ -6,7 +6,7 @@
 
     <p>To embed course schedules on a web page you need to include two elements: a <em>placeholder</em> and a <code>&lt;script&gt;</code>.</p>
 
-    <p>The <em>placeholder</em> is a tag whose content will be replaced by the course schedule markup. While technically this can be any HTML tag with <code>id</code>, using a <code>div</code> is recommended. The placeholder must appear before the course schedule <code>&lt;script&gt;</code>. The placeholder must have an <code>id</code> attribute of <code>schedule-{parameter}</code>. Where <em>{parameter}</em> is the requested course schedule data.</p>
+    <p>The <em>placeholder</em> is a <em>empty</em> tag whose inner content will be replaced by the course schedule markup. While technically this can be any HTML tag with <code>id</code>, using a <code>div</code> is recommended. The placeholder must appear before the course schedule <code>&lt;script&gt;</code>. The placeholder must have an <code>id</code> attribute of <code>schedule-{parameter}</code>. Where <em>{parameter}</em> is the requested course schedule.</p>
 
     <p>For example, a placeholder for the course 5 would be:</p>
 
@@ -16,7 +16,7 @@
 
     <pre><code>&lt;div id="schedule-KY"&gt;&lt;/div&gt;</code></pre>
 
-    <p>The course schedule <code>&lt;script&gt;</code> tag must appear after the placeholder. The <code>&lt;script&gt;</code> tag must have a <code>src</code> attribute of either <code>/course-schedule/{id}</code> or <code>/state-schedule/{code}</code>. Where <em>{id}</em> is the <em>ID</em> listed on the {!! link_to_route('courses.index', 'Courses') !!} page and <em>{code}</em> is the state abbreviation.</p>
+    <p>The course schedule <code>&lt;script&gt;</code> tag must appear after the placeholder. It is recommended to place the <code>&lt;script&gt;</code> tag before the closing <code>&lt;body&gt;</code> tag. The <code>&lt;script&gt;</code> tag must have a <code>src</code> attribute of either <code>/course-schedule/{id}</code> or <code>/state-schedule/{code}</code>. Where <em>{id}</em> is the <em>ID</em> listed on the {!! link_to_route('courses.index', 'Courses') !!} page and <em>{code}</em> is the state abbreviation.</p>
 
     <p>Following from the examples above, the respective <code>&lt;script&gt;</code> tags would be:</p>
 
