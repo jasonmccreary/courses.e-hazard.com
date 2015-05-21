@@ -28,4 +28,5 @@ rm -rf public/js/cache && mkdir public/js/cache
 - documenation: .5
 - flash messages: .5
 - sprint 3: .25
-- caching: 1
+- caching: 1.25
+- sprint 3: 1
