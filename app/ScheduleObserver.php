@@ -25,7 +25,7 @@ class ScheduleObserver
 
         $cache_path = public_path() . '/js/cache';
 
-        foreach($stale_files as $stale_file) {
+        foreach ($stale_files as $stale_file) {
             File::delete($cache_path . DIRECTORY_SEPARATOR . $stale_file . '.js');
         }
     }
